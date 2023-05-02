@@ -24,8 +24,8 @@ export class Order {
 
     @Field({ nullable: true })
     total: number;
-    
-    @Field({nullable: true })
+
+    @Field({ nullable: true })
     createdAt: Date;
 
     //user n--1

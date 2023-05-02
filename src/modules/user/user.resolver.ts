@@ -4,13 +4,9 @@ import { User } from '../../common/dto/user.dto';
 
 @Resolver()
 export class UserResolver {
-    constructor(private readonly userService: UserService) {}
-    @Query(() => String)
-    async hello(): Promise<string> {
-        return 'Hello world';
-    }
+    constructor(private readonly userService: UserService) { }
     @Query(() => [User])
-    async getAllUsers(): Promise<User[]>  {
+    async getAllUsers(): Promise<User[]> {
         return await this.userService.findAll();
     }
 

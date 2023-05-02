@@ -1,4 +1,3 @@
-
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToMany } from 'typeorm';
 import { Order } from '../order/order.entity';
 
@@ -10,7 +9,7 @@ export class User {
     @Column({ length: 200 })
     name: string;
 
-    @Column({length: 15 })
+    @Column({ length: 15 })
     phoneNumber: string;
 
     @Column({ length: 200 })

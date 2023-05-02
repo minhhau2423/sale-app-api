@@ -7,7 +7,7 @@ export class User {
     @Field()
     id: number;
 
-    @Field()
+    @Field({nullable: true})
     name: string;
 
     @Field()
