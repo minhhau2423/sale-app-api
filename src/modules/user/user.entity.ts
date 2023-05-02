@@ -1,16 +1,29 @@
-import { Product } from 'src/models/product/entities/product.entity';
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToMany } from 'typeorm';
 
-@Entity({ name: "category" })
-export class Category {
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToMany } from 'typeorm';
+import { Order } from '../order/order.entity';
+
+@Entity({ name: "user" })
+export class User {
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column({ length: 200 })
     name: string;
 
+    @Column({length: 15 })
+    phoneNumber: string;
+
+    @Column({ length: 200 })
+    password: string;
+
     @Column({ length: 500, nullable: true })
-    imageUrl: string;
+    address: string;
+
+    @Column({ nullable: true })
+    point: number;
+
+    @Column({ length: 500, nullable: true })
+    avatarUrl: string;
 
     @CreateDateColumn()
     createdAt: Date;
@@ -24,8 +37,8 @@ export class Category {
     @Column({ default: true })
     isActive: boolean;
 
-    //products 1--n
-    @OneToMany(()=>Product, prod=>prod.category)
-    products:Product[];
+    //order 1--n
+    @OneToMany(() => Order, order => order.user)
+    orders: Order[];
 
 }

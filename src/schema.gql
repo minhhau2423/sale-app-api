@@ -2,6 +2,42 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Order {
+  DeliveryDate: DateTime
+  createdAt: DateTime
+  discount: Float
+  estimatedDeliveryDate: DateTime
+  id: Float!
+  shippingFee: Float
+  status: Status!
+  total: Float
+  user: User!
+}
+
 type Query {
+  getAllUsers: [User!]!
   hello: String!
+}
+
+enum Status {
+  canceled
+  completed
+  processing
+}
+
+type User {
+  address: String
+  avatarUrl: String
+  createdAt: DateTime
+  id: Float!
+  name: String!
+  orders: [Order!]
+  password: String!
+  phoneNumber: String!
+  point: Float
 }

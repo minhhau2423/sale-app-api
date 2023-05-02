@@ -1,6 +1,6 @@
 import { Status } from 'src/common/interfaces/status.enum';
-import { User } from 'src/models/user/entities/user.entity';
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, ManyToOne } from 'typeorm';
+import { User } from '../user/user.entity';
 
 @Entity({ name: "order" })
 export class Order {
