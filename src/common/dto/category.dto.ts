@@ -10,7 +10,7 @@ export class Category {
     name: string;
 
     @Field({ nullable: true })
-    imageUrl: string;
+    imageUri: string;
 
     @Field({ nullable: true })
     createdAt: Date;

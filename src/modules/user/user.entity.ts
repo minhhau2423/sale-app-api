@@ -22,7 +22,7 @@ export class User {
     point: number;
 
     @Column({ length: 500, nullable: true })
-    avatarUrl: string;
+    avatarUri: string;
 
     @CreateDateColumn()
     createdAt: Date;

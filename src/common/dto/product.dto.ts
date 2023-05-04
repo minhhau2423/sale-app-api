@@ -28,7 +28,7 @@ export class Product {
     description: string;
 
     @Field({ nullable: true })
-    imageUrl: string;
+    imageUri: string;
 
     @Field()
     isActive: boolean;

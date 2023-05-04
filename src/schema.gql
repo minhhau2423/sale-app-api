@@ -5,7 +5,7 @@
 type Category {
   createdAt: DateTime
   id: Float!
-  imageUrl: String
+  imageUri: String
   name: String
   products: Product
 }
@@ -14,6 +14,10 @@ type Category {
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
 scalar DateTime
+
+type Mutation {
+  register(registerInput: RegisterInput!): User!
+}
 
 type Order {
   DeliveryDate: DateTime
@@ -34,7 +38,7 @@ type Product {
   discount: Float
   grossPrice: Float
   id: Float!
-  imageUrl: String
+  imageUri: String
   isActive: Boolean!
   name: String
   netPrice: Float
@@ -43,8 +47,18 @@ type Product {
 
 type Query {
   getAllCategories: [Category!]!
+  getAllProducts: [Product!]!
   getAllUsers: [User!]!
-  getCategoryById(idCat: Float!): Category!
+  getBestDeal: [Product!]!
+  getCategoryById(id: Float!): Category!
+  getProductById(id: Float!): Product!
+  getProductsByCategoryId(categoryId: Float!): [Product!]!
+  searchByName(name: String!): [Product!]!
+}
+
+input RegisterInput {
+  password: String!
+  phoneNumber: String!
 }
 
 enum Status {
@@ -55,7 +69,7 @@ enum Status {
 
 type User {
   address: String
-  avatarUrl: String
+  avatarUri: String
   createdAt: DateTime
   id: Float!
   name: String

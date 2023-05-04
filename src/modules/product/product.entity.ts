@@ -28,7 +28,7 @@ export class Product {
     description: string;
 
     @Column({ length: 500, nullable: true })
-    imageUrl: string;
+    imageUri: string;
 
     @CreateDateColumn()
     createdAt: Date;

@@ -10,7 +10,7 @@ export class Category {
     name: string;
 
     @Column({ length: 500, nullable: true })
-    imageUrl: string;
+    imageUri: string;
 
     @CreateDateColumn()
     createdAt: Date;
@@ -25,7 +25,7 @@ export class Category {
     isActive: boolean;
 
     //products 1--n
-    @OneToMany(()=>Product, prod=>prod.category)
-    products:Product[];
+    @OneToMany(() => Product, prod => prod.category)
+    products: Product[];
 
 }

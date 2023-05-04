@@ -7,7 +7,7 @@ export class User {
     @Field()
     id: number;
 
-    @Field({nullable: true})
+    @Field({ nullable: true })
     name: string;
 
     @Field()
@@ -16,20 +16,20 @@ export class User {
     @Field()
     password: string;
 
-    @Field({nullable: true })
+    @Field({ nullable: true })
     address: string;
 
     @Field({ nullable: true })
     point: number;
 
-    @Field({nullable: true })
-    avatarUrl: string;
+    @Field({ nullable: true })
+    avatarUri: string;
 
-    @Field({nullable: true })
+    @Field({ nullable: true })
     createdAt: Date;
 
     //order 1--n
-    @Field(() => [Order],{ nullable: true})
+    @Field(() => [Order], { nullable: true })
     orders: Order[];
 
 }
