@@ -43,6 +43,9 @@ export default class ProductService {
     }
 
     findByName(name: string): Promise<Product[]> {
+        if (name === "") {
+            return  Promise.resolve([]);
+          }
         return this.productsRepository.find({
             where: {
                 name: Like(`%${name}%`)

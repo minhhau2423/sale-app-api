@@ -1,5 +1,6 @@
 import { Category } from 'src/modules/category/category.entity';
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToMany, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToMany, ManyToOne, ManyToMany } from 'typeorm';
+import { Order } from '../order/order.entity';
 
 @Entity({ name: "product" })
 export class Product {
@@ -46,4 +47,10 @@ export class Product {
     @ManyToOne(() => Category, cat => cat.products)
     category: Category
 
+    @ManyToMany(
+        () => Order,
+        order => order.products,
+        { onDelete: 'NO ACTION', onUpdate: 'NO ACTION', },
+    )
+    orders: Order[]
 }

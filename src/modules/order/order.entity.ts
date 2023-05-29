@@ -1,6 +1,7 @@
 import { Status } from 'src/common/interfaces/status.enum';
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, ManyToOne, ManyToMany, JoinTable } from 'typeorm';
 import { User } from '../user/user.entity';
+import { Product } from '../product/product.entity';
 
 @Entity({ name: "order" })
 export class Order {
@@ -42,5 +43,7 @@ export class Order {
     user: User;
 
     //product n--n
-
+    @ManyToMany(() => Product)
+    @JoinTable()
+    products: Product[]
 }
