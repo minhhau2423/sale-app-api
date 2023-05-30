@@ -51,6 +51,7 @@ type Query {
   getAllUsers: [User!]!
   getBestDeal: [Product!]!
   getCategoryById(id: Float!): Category!
+  getListProducts(ids: [Int!]!): [Product!]!
   getProductById(id: Float!): Product!
   getProductsByCategoryId(categoryId: Float!): [Product!]!
   searchByName(name: String!): [Product!]!

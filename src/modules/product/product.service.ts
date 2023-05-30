@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Product as ProductEntity } from "./product.entity";
-import { Like, MoreThan, Repository } from "typeorm";
+import { In, Like, MoreThan, Repository } from "typeorm";
 import { Product } from "src/common/dto/product.dto";
 
 @Injectable()
@@ -10,9 +10,11 @@ export default class ProductService {
         @InjectRepository(ProductEntity)
         private productsRepository: Repository<ProductEntity>,
     ) { }
+
     findAll(): Promise<Product[]> {
         return this.productsRepository.find();
     }
+
     findOne(id: number): Promise<Product | null> {
         return this.productsRepository.findOne({
             where: {
@@ -21,6 +23,15 @@ export default class ProductService {
             relations: ['category'],
         });
     }
+
+    findMany(ids: number[]): Promise<Product[]|[]> {
+        return this.productsRepository.find({
+            where: {
+                id: In(ids),
+            }
+        });
+    }
+
     findByCategoryId(categoryId: number): Promise<Product[]> {
         return this.productsRepository.find({
             where: {
@@ -29,6 +40,7 @@ export default class ProductService {
             relations: ['category'],
         });
     }
+
     findBestDeal(): Promise<Product[]> {
         return this.productsRepository.find({
             where: {

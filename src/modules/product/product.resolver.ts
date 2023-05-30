@@ -1,4 +1,4 @@
-import { Resolver, Query, Args } from '@nestjs/graphql';
+import { Resolver, Query, Args, Int } from '@nestjs/graphql';
 import { Product } from 'src/common/dto/product.dto';
 import ProductService from './product.service';
 
@@ -19,7 +19,15 @@ export class ProductResolver {
     ): Promise<Product | null> {
         return await this.ProductService.findOne(id);
     }
-    
+
+    @Query(() => [Product] || null)
+    async getListProducts(
+        @Args("ids", { type: () => [Int] })
+        ids: number[]
+    ): Promise<(Product | null)[]> {
+        return await this.ProductService.findMany(ids);
+    }
+
     @Query(()=>[Product])
     async getProductsByCategoryId (
         @Args("categoryId")
