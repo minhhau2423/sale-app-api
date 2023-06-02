@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from '../../common/dto/user.dto';
 import { User as UserEntity } from './user.entity';
-import { RegisterInput } from 'src/common/dto/register.input.dto.';
+import { RegisterInput } from 'src/common/dto/register.input.dto';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
@@ -30,7 +30,7 @@ export class UserService {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = new User();
-    user.name = "Customer"
+    user.name = "Khách hàng mới"
     user.phoneNumber = phoneNumber;
     user.password = hashedPassword;
 

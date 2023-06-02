@@ -35,7 +35,9 @@ export default class ProductService {
     findByCategoryId(categoryId: number): Promise<Product[]> {
         return this.productsRepository.find({
             where: {
-                category: { id: categoryId },
+                category: { 
+                    id: categoryId 
+                },
             },
             relations: ['category'],
         });

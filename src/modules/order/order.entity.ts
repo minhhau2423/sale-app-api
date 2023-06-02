@@ -26,6 +26,9 @@ export class Order {
     @Column({ nullable: true })
     total: number;
 
+    @Column({ length: 500 })
+    note: string;
+
     @CreateDateColumn()
     createdAt: Date;
 
@@ -43,7 +46,7 @@ export class Order {
     user: User;
 
     //product n--n
-    @ManyToMany(() => Product)
-    @JoinTable()
+    @ManyToMany(() => Product, product => product.orders)
+    @JoinTable({name: 'order_products'})
     products: Product[]
 }

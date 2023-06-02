@@ -1,6 +1,7 @@
 import { Field, ObjectType } from "@nestjs/graphql";
 import { Status } from "src/common/interfaces/status.enum";
 import { User } from "src/common/dto/user.dto";
+import { Product } from "./product.dto";
 
 @ObjectType()
 export class Order {
@@ -12,6 +13,9 @@ export class Order {
 
     @Field({ nullable: true })
     estimatedDeliveryDate: Date;
+
+    @Field({ nullable: true })
+    note: string;
 
     @Field({ nullable: true })
     DeliveryDate: Date;
@@ -33,5 +37,6 @@ export class Order {
     user: User;
 
     //product n--n
-
+    @Field(() => [Product])
+    products: Product[];
 }

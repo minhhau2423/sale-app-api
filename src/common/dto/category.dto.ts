@@ -16,7 +16,7 @@ export class Category {
     createdAt: Date;
 
     //products 1--n
-    @Field(() => Product, { nullable: true })
+    @Field(() => [Product], { nullable: true })
     products: Product[];
 
 }
