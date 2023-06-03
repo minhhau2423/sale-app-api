@@ -17,7 +17,8 @@ scalar DateTime
 
 type Mutation {
   addOrder(orderInput: OrderInput!): Order!
-  register(registerInput: RegisterInput!): User!
+  logginInfo(userInput: UserInput!): User!
+  register(userInput: UserInput!): User!
 }
 
 type Order {
@@ -66,12 +67,8 @@ type Query {
   getOrdersByUserId(userId: Float!): [Order!]!
   getProductById(id: Float!): Product!
   getProductsByCategoryId(categoryId: Float!): [Product!]!
+  getUserByNumPhone(phoneNumber: String!): User!
   searchByName(name: String!): [Product!]!
-}
-
-input RegisterInput {
-  password: String!
-  phoneNumber: String!
 }
 
 enum Status {
@@ -90,4 +87,9 @@ type User {
   password: String!
   phoneNumber: String!
   point: Float
+}
+
+input UserInput {
+  password: String!
+  phoneNumber: String!
 }

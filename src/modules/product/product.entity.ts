@@ -31,13 +31,13 @@ export class Product {
     @Column({ length: 500, nullable: true })
     imageUri: string;
 
-    @CreateDateColumn()
+    @CreateDateColumn({ type: 'timestamp', default: 'NOW()' })
     createdAt: Date;
 
-    @UpdateDateColumn()
+    @UpdateDateColumn({ type: 'timestamp', onUpdate: 'NOW()', nullable: true })
     updatedAt: Date;
 
-    @DeleteDateColumn()
+    @DeleteDateColumn({ type: 'timestamp', onUpdate: 'NOW()', nullable: true })
     deletedAt: Date;
 
     @Column({ default: true })
