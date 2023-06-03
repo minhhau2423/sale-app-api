@@ -32,7 +32,10 @@ export class UserService {
   async userLogin(userInput: UserInput): Promise<User | null> {
     const phoneNumber = userInput.phoneNumber;
     const user = await this.usersRepository.findOneBy({ phoneNumber });
-    const res = await bcrypt.compare(userInput.password, user.password);
+    if(!user){
+      return null
+    }
+    const res = await bcrypt.compare(userInput.password, user?.password);
     if (res) {
       return user;
     } else {
